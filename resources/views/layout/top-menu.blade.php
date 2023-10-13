@@ -13,7 +13,7 @@
             <a href="" class="-intro-x hidden md:flex">
                 <img alt="Midone - HTML Admin Template" class="w-6" src="{{ asset('build/assets/images/logo.svg') }}">
                 <span class="text-white text-lg ml-3">
-                    Rubick
+                    BuuGym
                 </span>
             </a>
             <!-- END: Logo -->

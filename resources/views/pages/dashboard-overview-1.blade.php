@@ -44,7 +44,7 @@
                                     </div>
                                 </div>
                                 <div class="text-3xl font-medium leading-8 mt-6">4.710</div>
-                                <div class="text-base text-slate-500 mt-1">Item Sales</div>
+                                <div class="text-base text-slate-500 mt-1">Tổng số hội viên</div>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                                     </div>
                                 </div>
                                 <div class="text-3xl font-medium leading-8 mt-6">3.721</div>
-                                <div class="text-base text-slate-500 mt-1">New Orders</div>
+                                <div class="text-base text-slate-500 mt-1">Tham gia tháng này</div>
                             </div>
                         </div>
                     </div>
@@ -75,8 +75,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="text-3xl font-medium leading-8 mt-6">2.149</div>
-                                <div class="text-base text-slate-500 mt-1">Total Products</div>
+                                <div class="text-3xl font-medium leading-8 mt-6">112.149</div>
+                                <div class="text-base text-slate-500 mt-1">Thu nhập tháng này</div>
                             </div>
                         </div>
                     </div>
@@ -92,17 +92,17 @@
                                     </div>
                                 </div>
                                 <div class="text-3xl font-medium leading-8 mt-6">152.040</div>
-                                <div class="text-base text-slate-500 mt-1">Unique Visitor</div>
+                                <div class="text-base text-slate-500 mt-1">Thu nhập khách vãng lai</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- END: General Report -->
-            <!-- BEGIN: Sales Report -->
+            <!-- BEGIN: Doanh thu -->
             <div class="col-span-12 lg:col-span-6 mt-8">
                 <div class="intro-y block sm:flex items-center h-10">
-                    <h2 class="text-lg font-medium truncate mr-5">Sales Report</h2>
+                    <h2 class="text-lg font-medium truncate mr-5">Doanh thu</h2>
                     <div class="sm:ml-auto mt-3 sm:mt-0 relative text-slate-500">
                         <i data-lucide="calendar" class="w-4 h-4 z-10 absolute my-auto inset-y-0 ml-3 left-0"></i>
                         <input type="text" class="datepicker form-control sm:w-56 box pl-10">
@@ -138,12 +138,12 @@
                     </div>
                     <div class="report-chart">
                         <div class="h-[275px]">
-                            <canvas id="report-line-chart" class="mt-6 -mb-6"></canvas>
+                            <canvas id="report-bar-chart-1" class="mt-6 -mb-6"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- END: Sales Report -->
+            <!-- END: Doanh thu -->
             <!-- BEGIN: Weekly Top Seller -->
             <div class="col-span-12 sm:col-span-6 lg:col-span-3 mt-8">
                 <div class="intro-y flex items-center h-10">

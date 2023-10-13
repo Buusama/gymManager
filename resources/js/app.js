@@ -66,3 +66,5 @@ import "./dark-mode-switcher";
  |
  */
 import "./custom.js";
+//import all file js in folder page
+import "./page/dashboard-1.js";

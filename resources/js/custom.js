@@ -16,4 +16,18 @@ import Toastify from "toastify-js";
             stopOnFocus: true,
         }).showToast();
     }
+    if ($("#failed-notification-content").length) {
+        console.log("failed-notification-content");
+        Toastify({
+            node: $("#failed-notification-content")
+                .clone()
+                .removeClass("hidden")[0],
+            duration: 3000,
+            newWindow: true,
+            close: true,
+            gravity: "top",
+            position: "right",
+            stopOnFocus: true,
+        }).showToast();
+    }
 })();

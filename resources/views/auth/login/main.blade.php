@@ -3,7 +3,33 @@
 @section('head')
 <title>Login - BuuGym </title>
 @endsection
+@if(session('success'))
+<!-- BEGIN: Success Notification Content -->
+<div id="success-notification-content" class="toastify-content hidden flex">
+    <i class="text-success" data-lucide="check-circle"></i>
+    <div class="ml-4 mr-4">
+        <div class="font-medium">Registration success!</div>
+        <div class="text-slate-500 mt-1">
+            Please check your e-mail for further info!
+        </div>
+    </div>
+</div>
+<!-- END: Success Notification Content -->
+@endif
+@if ($errors->any())
+<!-- BEGIN: Failed Notification Content -->
+<div id="failed-notification-content" class="toastify-content hidden flex">
+    <i class="text-danger" data-lucide="x-circle"></i>
+    <div class="ml-4 mr-4">
+        <div class="font-medium">Login failed!</div>
+        <div class="text-slate-500 mt-1">
+            Please check the fileld form.
+        </div>
+    </div>
+</div>
+<!-- END: Failed Notification Content -->
 
+@endif
 @section('content')
 <div class="container sm:px-10">
     <div class="block xl:grid grid-cols-2 gap-4">
@@ -30,10 +56,14 @@
                 <div class="intro-x mt-8">
                     <form id="login-form" method="post" action="{{ route('login.check') }}">
                         @csrf
-                        <input id="email" type="email" name="email" class="intro-x login__input form-control py-3 px-4 block" placeholder="Email" value="{{ old('email') }}" >
-                        <div id="error-email" class="login__input-error text-danger mt-2"></div>
-                        <input id="password" type="password" name="password" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Password" value="{{ old('password') }}" >
-                        <div id="error-password" class="login__input-error text-danger mt-2"></div>
+                        <input id="email" type="email" name="email" class="intro-x login__input form-control py-3 px-4 block" placeholder="Email" value="{{ old('email') }}">
+                        @error('email')
+                        <div class="login__input-error text-danger mt-2">{{ $errors->first('email') }}</div>
+                        @enderror
+                        <input id="password" type="password" name="password" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Password" value="{{ old('password') }}">
+                        @error('password')
+                        <div class="login__input-error text-danger mt-2">{{ $errors->first('password') }}</div>
+                        @enderror
                         <div class="intro-x flex text-slate-600 dark:text-slate-500 text-xs sm:text-sm mt-4">
                             <div class="flex items-center mr-auto">
                                 <input id="remember-me" type="checkbox" class="form-check-input border mr-2">
@@ -53,62 +83,6 @@
             </div>
         </div>
         <!-- END: Login Form -->
-        <!-- BEGIN: Success Notification Content -->
-        <div id="success-notification-content" class="toastify-content hidden flex">
-            <i class="text-success" data-lucide="check-circle"></i>
-            <div class="ml-4 mr-4">
-                <div class="font-medium">Registration success!</div>
-                <div class="text-slate-500 mt-1">
-                    Please check your e-mail for further info!
-                </div>
-            </div>
-        </div>
-        <!-- END: Success Notification Content -->
-        <!-- BEGIN: Failed Notification Content -->
-        <div id="failed-notification-content" class="toastify-content hidden flex">
-            <i class="text-danger" data-lucide="x-circle"></i>
-            <div class="ml-4 mr-4">
-                <div class="font-medium">Registration failed!</div>
-                <div class="text-slate-500 mt-1">
-                    Please check the fileld form.
-                </div>
-            </div>
-        </div>
-        <!-- END: Failed Notification Content -->
     </div>
 </div>
-@endsection
-@section('script')
-<script>
-    $("#login-form").each(function() {
-        let pristine = new Pristine(this, {
-            classTo: "input-form",
-            errorClass: "has-error",
-            errorTextParent: "input-form",
-            errorTextClass: "text-danger mt-2",
-        });
-
-        pristine.addValidator(
-            $(this).find('input[type="url"]')[0],
-            function(value) {
-                let expression =
-                    /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
-                let regex = new RegExp(expression);
-                if (!value.length || (value.length && value.match(regex))) {
-                    return true;
-                }
-                return false;
-            },
-            "This field is URL format only",
-            2,
-            false
-        );
-
-        $(this).on("submit", function(e) {
-            e.preventDefault();
-            onSubmit(pristine);
-        });
-    });
-</script>
-
 @endsection
