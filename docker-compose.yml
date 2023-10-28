@@ -57,9 +57,22 @@ services:
         networks:
             - buuGym-network
 
+    minio:
+        image: minio/minio:latest
+        container_name: minio-buuGym
+        volumes:
+            - minio-store:/data
+        ports:
+            - "9000:9000"
+            - "9001:9001"
+        command: server /data --console-address ":9001"
+        networks:
+            - buuGym-network
+
 networks:
     buuGym-network:
         driver: bridge
 
 volumes:
     buuGym-database:
+    minio-store:

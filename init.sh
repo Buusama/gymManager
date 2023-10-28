@@ -1,4 +1,5 @@
 chmod -R 777 ./
+git config core.fileMode false
 cp .env.example .env
 docker-compose up --build -d
 docker-compose exec app composer install --ignore-platform-reqs
